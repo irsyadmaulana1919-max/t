@@ -1,0 +1,1577 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KUMPULAN APLIKASI TRADING TERPERCAYA</title>
+    <!-- FontAwesome Icons & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-main: #060b19;
+            --bg-gradient: radial-gradient(circle at 15% 15%, rgba(14, 165, 233, 0.14) 0%, transparent 45%),
+                           radial-gradient(circle at 85% 85%, rgba(37, 99, 235, 0.16) 0%, transparent 45%),
+                           linear-gradient(180deg, #060b19 0%, #0b132b 50%, #060b19 100%);
+            --card-bg: linear-gradient(145deg, #0f172a 0%, #162238 100%);
+            --card-border: rgba(56, 189, 248, 0.25);
+            --card-border-hover: #38bdf8;
+            --primary-cyan: #38bdf8;
+            --primary-blue: #0284c7;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            background-image: var(--bg-gradient);
+            color: var(--text-light);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Background Trading Grid Pattern */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image: 
+                linear-gradient(to right, rgba(56, 189, 248, 0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(56, 189, 248, 0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* =========================================================
+           ANIMASI PEMBUKA: DUA PINTU MENYILANG (CROSSED DOORS)
+           ========================================================= */
+        .door-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .door-panel {
+            position: absolute;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(160deg, #040814 0%, #0b152c 50%, #0f1f40 100%);
+            display: flex;
+            align-items: center;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
+            will-change: transform;
+        }
+
+        .door-panel::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(to right, rgba(56, 189, 248, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(56, 189, 248, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        .door-left {
+            left: 0;
+            justify-content: flex-end;
+            border-right: 3px solid var(--primary-cyan);
+            box-shadow: 10px 0 35px rgba(56, 189, 248, 0.35);
+            animation: crossDoorLeft 1.6s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+        }
+
+        .door-right {
+            right: 0;
+            justify-content: flex-start;
+            border-left: 3px solid var(--primary-cyan);
+            box-shadow: -10px 0 35px rgba(56, 189, 248, 0.35);
+            animation: crossDoorRight 1.6s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+        }
+
+        .door-badge {
+            position: relative;
+            z-index: 2;
+            padding: 1.2rem;
+            background: rgba(6, 11, 25, 0.95);
+            border: 2px solid var(--primary-cyan);
+            color: var(--primary-cyan);
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
+        }
+
+        .door-left .door-badge {
+            border-right: none;
+            border-radius: 16px 0 0 16px;
+            padding-right: 0.75rem;
+        }
+
+        .door-right .door-badge {
+            border-left: none;
+            border-radius: 0 16px 16px 0;
+            padding-left: 0.75rem;
+        }
+
+        @keyframes crossDoorLeft {
+            0% { transform: translateX(0); z-index: 2; }
+            38% { transform: translateX(18%); z-index: 2; }
+            52% { transform: translateX(18%); z-index: 2; }
+            100% { transform: translateX(-105%); z-index: 2; }
+        }
+
+        @keyframes crossDoorRight {
+            0% { transform: translateX(0); z-index: 1; }
+            38% { transform: translateX(-18%); z-index: 1; }
+            52% { transform: translateX(-18%); z-index: 1; }
+            100% { transform: translateX(105%); z-index: 1; }
+        }
+
+        /* Animasi Konten Website */
+        @keyframes fadeDown {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes cardEntrance {
+            0% { opacity: 0; transform: translateY(25px) scale(0.95); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 15px rgba(56, 189, 248, 0.15); }
+            50% { box-shadow: 0 0 25px rgba(56, 189, 248, 0.35); }
+        }
+
+        /* Header */
+        header {
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.4) 100%);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+            text-align: center;
+            padding: 3.5rem 1.5rem 3rem;
+            opacity: 0;
+            animation: fadeDown 0.7s ease-out 0.95s forwards;
+        }
+
+        .header-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0.4rem 1.1rem;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 50px;
+            color: var(--primary-cyan);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        header h1 {
+            font-size: 2.35rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+            background: linear-gradient(to right, #ffffff 20%, #38bdf8 60%, #60a5fa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 4px 25px rgba(56, 189, 248, 0.25);
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        /* Container & Grid (5 kesamping x 3 kebawah = 15 kotak) */
+        main {
+            position: relative;
+            z-index: 1;
+            max-width: 1440px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 3rem 1.5rem 4rem;
+            flex: 1;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.6rem;
+        }
+
+        /* Card Component - Tema Biru Hitam Mencolok */
+        .card {
+            background: var(--card-bg);
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1.5px solid var(--card-border);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+            opacity: 0;
+            animation: cardEntrance 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        .card:nth-child(1) { animation-delay: 1.00s; }
+        .card:nth-child(2) { animation-delay: 1.05s; }
+        .card:nth-child(3) { animation-delay: 1.10s; }
+        .card:nth-child(4) { animation-delay: 1.15s; }
+        .card:nth-child(5) { animation-delay: 1.20s; }
+        .card:nth-child(6) { animation-delay: 1.25s; }
+        .card:nth-child(7) { animation-delay: 1.30s; }
+        .card:nth-child(8) { animation-delay: 1.35s; }
+        .card:nth-child(9) { animation-delay: 1.40s; }
+        .card:nth-child(10) { animation-delay: 1.45s; }
+        .card:nth-child(11) { animation-delay: 1.50s; }
+        .card:nth-child(12) { animation-delay: 1.55s; }
+        .card:nth-child(13) { animation-delay: 1.60s; }
+        .card:nth-child(14) { animation-delay: 1.65s; }
+        .card:nth-child(15) { animation-delay: 1.70s; }
+
+        .card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(56, 189, 248, 0.12), transparent);
+            transform: skewX(-25deg);
+            transition: left 0.6s ease;
+        }
+
+        .card:hover::after {
+            left: 150%;
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--card-border-hover);
+            background: linear-gradient(145deg, #13203c 0%, #1e325c 100%);
+            box-shadow: 0 20px 40px rgba(2, 132, 199, 0.35), 0 0 20px rgba(56, 189, 248, 0.3);
+        }
+
+        .card-img-wrapper {
+            width: 100%;
+            height: 135px;
+            background: linear-gradient(180deg, rgba(6, 11, 25, 0.6) 0%, rgba(15, 23, 42, 0.2) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.25rem;
+            border-bottom: 1px solid rgba(56, 189, 248, 0.15);
+            position: relative;
+        }
+
+        .card-img-wrapper.logo-box {
+            background: #ffffff;
+        }
+
+        .card-img-wrapper img {
+            max-width: 82%;
+            max-height: 82%;
+            object-fit: contain;
+            transition: transform 0.35s ease;
+        }
+
+        .icon-circle {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: rgba(56, 189, 248, 0.12);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.35s ease;
+        }
+
+        .card-icon {
+            font-size: 2.2rem;
+            color: var(--primary-cyan);
+            transition: transform 0.35s ease, color 0.35s ease;
+        }
+
+        .card:hover .card-img-wrapper img {
+            transform: scale(1.1);
+        }
+
+        .card:hover .icon-circle {
+            background: var(--primary-cyan);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
+            transform: scale(1.08);
+        }
+
+        .card:hover .card-icon {
+            color: #060b19;
+        }
+
+        .card-content {
+            padding: 1.35rem 1rem 1.5rem;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            justify-content: space-between;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.35rem;
+            letter-spacing: 0.3px;
+        }
+
+        .card-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 1.15rem;
+            line-height: 1.4;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 0.45rem 1rem;
+            background: linear-gradient(90deg, rgba(2, 132, 199, 0.25), rgba(56, 189, 248, 0.2));
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            color: #7dd3fc;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover .badge {
+            background: linear-gradient(90deg, #0284c7, #38bdf8);
+            color: #060b19;
+            border-color: transparent;
+            font-weight: 700;
+        }
+
+        /* Footer / Copyright & Kontak Pembuat Utama */
+        footer {
+            position: relative;
+            z-index: 1;
+            background: #040812;
+            color: #ffffff;
+            padding: 2.5rem 1.5rem;
+            margin-top: auto;
+            border-top: 2px solid rgba(56, 189, 248, 0.3);
+            box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.2rem;
+            text-align: center;
+        }
+
+        .dev-title {
+            font-size: 0.95rem;
+            color: #cbd5e1;
+            letter-spacing: 0.5px;
+        }
+
+        .developers-box {
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .dev-card {
+            background: linear-gradient(145deg, #0f172a, #1e293b);
+            border: 1px solid rgba(56, 189, 248, 0.35);
+            padding: 0.65rem 1.6rem;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--primary-cyan);
+            animation: pulseGlow 3s infinite;
+            transition: transform 0.3s ease;
+        }
+
+        .dev-card:hover {
+            transform: translateY(-3px);
+            background: rgba(56, 189, 248, 0.15);
+        }
+
+        /* Tombol Kontak Instagram Pembuat Utama */
+        .contact-section {
+            margin-top: 0.25rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .contact-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .ig-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 6px 20px rgba(220, 39, 67, 0.35);
+            transition: all 0.3s ease;
+        }
+
+        .ig-btn:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 10px 25px rgba(220, 39, 67, 0.55);
+        }
+
+        .ig-btn i {
+            font-size: 1.2rem;
+        }
+
+        .copyright {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 1.1rem;
+            width: 100%;
+            max-width: 650px;
+            line-height: 1.6;
+        }
+
+        /* Responsif Layar */
+        @media (max-width: 1200px) {
+            .grid-container { grid-template-columns: repeat(4, 1fr); }
+        }
+
+        @media (max-width: 992px) {
+            .grid-container { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.65rem; }
+            .grid-container { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+            .door-badge { font-size: 1rem; padding: 0.8rem; }
+        }
+
+        @media (max-width: 480px) {
+            .grid-container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Animasi Pembuka: Dua Pintu Menyilang -->
+    <div class="door-overlay" id="doorOverlay">
+        <div class="door-panel door-left">
+            <div class="door-badge"><i class="fa-solid fa-chart-line"></i> TRAD</div>
+        </div>
+        <div class="door-panel door-right">
+            <div class="door-badge">ING <i class="fa-solid fa-shield-halved"></i></div>
+        </div>
+    </div>
+
+    <!-- Header Section -->
+    <header>
+        <div class="header-pill">
+            <i class="fa-solid fa-chart-line"></i> Portal Investasi & Trading
+        </div>
+        <h1>KUMPULAN APLIKASI TRADING TERPERCAYA</h1>
+        <p><i class="fa-solid fa-shield-halved" style="color: #38bdf8;"></i> Direktori platform investasi saham, reksa dana, dan aset kripto resmi, aman, serta terpercaya.</p>
+    </header>
+
+    <!-- Main Grid: Total 15 Kotak Penuh (5 kesamping x 3 kebawah) -->
+    <main>
+        <div class="grid-container">
+            
+            <!-- BARIS 1 (Kotak 1 - 5) -->
+            <!-- 1. Stockbit -->
+            <a href="https://stockbit.com/" target="_blank" rel="noopener noreferrer" class="card">
+                <div class="card-img-wrapper logo-box">
+                    <img src="stockbit.png" alt="Stockbit Logo" onerror="this.onerror=null; this.parentNode.classList.remove('logo-box'); this.parentNode.innerHTML='<div class=\'icon-circle\'><i class=\'fa-solid fa-chart-line card-icon\'></i></div>';">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h2 class="card-title">Stockbit</h2>
+                        <p class="card-desc">Investasi Saham & Komunitas</p>
+                    </div>
+                    <span class="badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Website</span>
+                </div>
+            </a>
+
+            <!-- 2. Bibit -->
+            <a href="https://bibit.id/id" target="_blank" rel="noopener noreferrer" class="card">
+                <div class="card-img-wrapper logo-box">
+                    <img src="bibit.png" alt="Bibit Logo" onerror="this.onerror=null; this.parentNode.classList.remove('logo-box'); this.parentNode.innerHTML='<div class=\'icon-circle\'><i class=\'fa-solid fa-seedling card-icon\'></i></div>';">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h2 class="card-title">Bibit</h2>
+                        <p class="card-desc">Aplikasi Reksa Dana & Obligasi</p>
+                    </div>
+                    <span class="badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Website</span>
+                </div>
+            </a>
+
+            <!-- 3. Mitrade -->
+            <a href="https://www.mitrade.com/en" target="_blank" rel="noopener noreferrer" class="card">
+                <div class="card-img-wrapper">
+                    <div class="icon-circle"><i class="fa-solid fa-chart-simple card-icon"></i></div>
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h2 class="card-title">Mitrade</h2>
+                        <p class="card-desc">Trading CFD, Forex & Komoditas</p>
+                    </div>
+                    <span class="badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Website</span>
+                </div>
+            </a>
+
+            <!-- 4. Ajaib -->
+            <a href="https://ajaib.co.id/" target="_blank" rel="noopener noreferrer" class="card">
+                <div class="card-img-wrapper">
+                    <div class="icon-circle"><i class="fa-solid fa-wand-magic-sparkles card-icon"></i></div>
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h2 class="card-title">Ajaib</h2>
+                        <p class="card-desc">Investasi Saham & Kripto Mudah</p>
+                    </div>
+                    <span class="badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Website</span>
+                </div>
+            </a>
+
+            <!-- 5. Pluang -->
+            <a href="https://pluang.com/" target="_blank" rel="noopener noreferrer" class="card">
+                <div class="card-img-wrapper">
+                    <div class="icon-circle"><i class="fa-solid fa-coins card-icon"></i></div>
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h2 class="card-title">Pluang</h2>
+                        <p class="card-desc">Investasi Emas, Saham AS & Kripto</p>
+                    </div>
+                    <span class="badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Website</span>
+                </div>
+            </a>
+
+            <!-- BARIS 2 (Kotak 6 - 10) -->
+            <!-- 6. Nanovest -->
+            <a href="https://www.nanovest.io/" target="_blank" rel="noopener noreferrer" class="card">
+                <div class="card-img-wrapper">
+                    <div class="icon-circle"><i class="fa-solid fa-bolt card-icon"></i></div>
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h2 class="card-title">Nanovest</h2>
+                        <p class="card-desc">Investasi Saham AS & Kripto</p>
+                    </div>
+                    <span class="badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Website</span>
+                </div>
+            </a>
+
+            <!-- 7. Gotrade -->
+            <a href="https://www.heygotrade.com/en/" target="_blank" rel="noopener noreferrer" class="card">
+                <div class="card-img-wrapper">
+                    <div class="icon-circle"><i class="fa-solid fa-globe card-icon"></i></div>
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h2 class="card-title">Gotrade</h2>
+                        <p class="card-desc">Trading Saham AS Fraksional</p>
+                    </div>
+                    <span class="badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Website</span>
+                </div>
+            </a>
+
+            <!-- 8. Bittime -->
+            <a href="https://www.bittime.com/" target="_blank" rel="noopener noreferrer" class="card">
+                <div class="card-img-wrapper">
+                    <div class="icon-circle"><i class="fa-solid fa-bitcoin-sign card-icon"></i></div>
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h2 class="card-title">Bittime</h2>
+                        <p class="card-desc">Platform Jual Beli Aset Kripto</p>
+                    </div>
+                    <span class="badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Website</span>
+                </div>
+            </a>
+
+            <!-- 9. Pintu -->
+            <a href="https://pintu.co.id/?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer" class="card">
+                <div class="card-img-wrapper">
+                    <div class="icon-circle"><i class="fa-solid fa-door-open card-icon"></i></div>
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h2 class="card-title">Pintu</h2>
+                        <p class="card-desc">Aplikasi Kripto Simpel & Aman</p>
+                    </div>
+                    <span class="badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Website</span>
+                </div>
+            </a>
+
+            <!-- 10. Reku -->
+            <a href="https://www.reku.id/?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer" class="card">
+                <div class="card-img-wrapper">
+                    <div class="icon-circle"><i class="fa-solid fa-scale-balanced card-icon"></i></div>
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h2 class="card-title">Reku</h2>
+                        <p class="card-desc">Investasi Aset Kripto Terpercaya</p>
+                    </div>
+                    <span class="badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Website</span>
+                </div>
+            </a>
+
+            <!-- BARIS 3 (Kotak 11 - 15) -->
+            <!-- 11. Tokocrypto -->
+            <a href="https://www.tokocrypto.com/?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer" class="card">
+                <div class="card-img-wrapper">
+                    <div class="icon-circle"><i class="fa-solid fa-wallet card-icon"></i></div>
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h2 class="card-title">Tokocrypto</h2>
+                        <p class="card-desc">Pertukaran Aset Kripto Terbesar</p>
+                    </div>
+                    <span class="badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Website</span>
+                </div>
+            </a>
+
+            <!-- 12. Upbit -->
+            <a href="https://www.id.upbit.com/?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer" class="card">
+                <div class="card-img-wrapper">
+                    <div class="icon-circle"><i class="fa-solid fa-arrow-trend-up card-icon"></i></div>
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h2 class="card-title">Upbit Indonesia</h2>
+                        <p class="card-desc">Bursa Kripto Global & Lokal</p>
+                    </div>
+                    <span class="badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Website</span>
+                </div>
+            </a>
+
+            <!-- 13. Indodax -->
+            <a href="https://indodax.com/" target="_blank" rel="noopener noreferrer" class="card">
+                <div class="card-img-wrapper">
+                    <div class="icon-circle"><i class="fa-solid fa-cubes card-icon"></i></div>
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h2 class="card-title">Indodax</h2>
+                        <p class="card-desc">Marketplace Aset Kripto Indonesia</p>
+                    </div>
+                    <span class="badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Website</span>
+                </div>
+            </a>
+
+            <!-- 14. Tokocrypto Official -->
+            <a href="https://www.tokocrypto.com/" target="_blank" rel="noopener noreferrer" class="card">
+                <div class="card-img-wrapper">
+                    <div class="icon-circle"><i class="fa-solid fa-shield-halved card-icon"></i></div>
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h2 class="card-title">Tokocrypto Official</h2>
+                        <p class="card-desc">Trading Kripto Berizin Bappebti</p>
+                    </div>
+                    <span class="badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Website</span>
+                </div>
+            </a>
+
+            <!-- 15. Bareksa -->
+            <a href="https://www.bareksa.com/?gad_source=1&gad_campaignid=24430746394&gbraid=0AAAAADlK-JhaoazNsnoDmF9zmV_vqwcWe&gclid=CjwKCAiAquDXBhApEiwAoyNqBBcO2j_kUiOyEmwNloP-rkAMHDS5G40EADsQ-OYxBKLoDycF7NxILRoCTT8QAvD_BwE" target="_blank" rel="noopener noreferrer" class="card">
+                <div class="card-img-wrapper">
+                    <div class="icon-circle"><i class="fa-solid fa-chart-pie card-icon"></i></div>
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h2 class="card-title">Bareksa</h2>
+                        <p class="card-desc">Super App Investasi Reksa Dana & SBN</p>
+                    </div>
+                    <span class="badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Website</span>
+                </div>
+            </a>
+
+        </div>
+    </main>
+
+    <!-- Footer / Copyright & Kontak Pembuat Utama -->
+    <footer>
+        <div class="footer-container">
+            <span class="dev-title"><i class="fa-solid fa-code" style="color: #38bdf8;"></i> Website ini dibuat dan dikembangkan oleh:</span>
+            
+            <div class="developers-box">
+                <div class="dev-card">
+                    <i class="fa-solid fa-user-gear"></i>
+                    <span>IRSYAD</span>
+                </div>
+                <div class="dev-card">
+                    <i class="fa-solid fa-user-gear"></i>
+                    <span>HARUN</span>
+                </div>
+            </div>
+
+            <!-- Kontak Pembuat Utama (Instagram) -->
+            <div class="contact-section">
+                <span class="contact-label">Kontak Pembuat Utama:</span>
+                <a href="https://www.instagram.com/irsy.admaulana19/" target="_blank" rel="noopener noreferrer" class="ig-btn">
+                    <i class="fa-brands fa-instagram"></i> @irsy.admaulana19
+                </a>
+            </div>
+
+            <p class="copyright">
+                &copy; 2026 <strong>KUMPULAN APLIKASI TRADING TERPERCAYA</strong>. All Rights Reserved. <br>
+                Designed & Developed by <strong>IRSYAD</strong> & <strong>HARUN</strong>.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        setTimeout(() => {
+            const overlay = document.getElementById('doorOverlay');
+            if (overlay) overlay.remove();
+        }, 1800);
+    </script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KUMPULAN APLIKASI TRADING TERPERCAYA</title>
+    <!-- FontAwesome Icons & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-main: #060b19;
+            --bg-gradient: radial-gradient(circle at 15% 15%, rgba(14, 165, 233, 0.14) 0%, transparent 45%),
+                           radial-gradient(circle at 85% 85%, rgba(37, 99, 235, 0.16) 0%, transparent 45%),
+                           linear-gradient(180deg, #060b19 0%, #0b132b 50%, #060b19 100%);
+            --card-bg: linear-gradient(145deg, #0f172a 0%, #162238 100%);
+            --card-border: rgba(56, 189, 248, 0.25);
+            --card-border-hover: #38bdf8;
+            --primary-cyan: #38bdf8;
+            --primary-blue: #0284c7;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            background-image: var(--bg-gradient);
+            color: var(--text-light);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Background Trading Grid Pattern */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image: 
+                linear-gradient(to right, rgba(56, 189, 248, 0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(56, 189, 248, 0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* =========================================================
+           ANIMASI PEMBUKA: DUA PINTU MENYILANG (CROSSED DOORS)
+           ========================================================= */
+        .door-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .door-panel {
+            position: absolute;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(160deg, #040814 0%, #0b152c 50%, #0f1f40 100%);
+            display: flex;
+            align-items: center;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
+            will-change: transform;
+        }
+
+        .door-panel::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(to right, rgba(56, 189, 248, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(56, 189, 248, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        .door-left {
+            left: 0;
+            justify-content: flex-end;
+            border-right: 3px solid var(--primary-cyan);
+            box-shadow: 10px 0 35px rgba(56, 189, 248, 0.35);
+            animation: crossDoorLeft 1.6s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+        }
+
+        .door-right {
+            right: 0;
+            justify-content: flex-start;
+            border-left: 3px solid var(--primary-cyan);
+            box-shadow: -10px 0 35px rgba(56, 189, 248, 0.35);
+            animation: crossDoorRight 1.6s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+        }
+
+        .door-badge {
+            position: relative;
+            z-index: 2;
+            padding: 1.2rem;
+            background: rgba(6, 11, 25, 0.95);
+            border: 2px solid var(--primary-cyan);
+            color: var(--primary-cyan);
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
+        }
+
+        .door-left .door-badge {
+            border-right: none;
+            border-radius: 16px 0 0 16px;
+            padding-right: 0.75rem;
+        }
+
+        .door-right .door-badge {
+            border-left: none;
+            border-radius: 0 16px 16px 0;
+            padding-left: 0.75rem;
+        }
+
+        @keyframes crossDoorLeft {
+            0% { transform: translateX(0); z-index: 2; }
+            38% { transform: translateX(18%); z-index: 2; }
+            52% { transform: translateX(18%); z-index: 2; }
+            100% { transform: translateX(-105%); z-index: 2; }
+        }
+
+        @keyframes crossDoorRight {
+            0% { transform: translateX(0); z-index: 1; }
+            38% { transform: translateX(-18%); z-index: 1; }
+            52% { transform: translateX(-18%); z-index: 1; }
+            100% { transform: translateX(105%); z-index: 1; }
+        }
+
+        /* Animasi Konten Website */
+        @keyframes fadeDown {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes cardEntrance {
+            0% { opacity: 0; transform: translateY(25px) scale(0.95); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 15px rgba(56, 189, 248, 0.15); }
+            50% { box-shadow: 0 0 25px rgba(56, 189, 248, 0.35); }
+        }
+
+        /* Header */
+        header {
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.4) 100%);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+            text-align: center;
+            padding: 3.5rem 1.5rem 3rem;
+            opacity: 0;
+            animation: fadeDown 0.7s ease-out 0.95s forwards;
+        }
+
+        .header-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0.4rem 1.1rem;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 50px;
+            color: var(--primary-cyan);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        header h1 {
+            font-size: 2.35rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+            background: linear-gradient(to right, #ffffff 20%, #38bdf8 60%, #60a5fa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 4px 25px rgba(56, 189, 248, 0.25);
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        /* Container & Grid (5 kesamping x 3 kebawah = 15 kotak) */
+        main {
+            position: relative;
+            z-index: 1;
+            max-width: 1440px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 3rem 1.5rem 4rem;
+            flex: 1;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.6rem;
+        }
+
+        /* Card Component - Tema Biru Hitam Mencolok */
+        .card {
+            background: var(--card-bg);
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1.5px solid var(--card-border);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+            opacity: 0;
+            animation: cardEntrance 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        .card:nth-child(1) { animation-delay: 1.00s; }
+        .card:nth-child(2) { animation-delay: 1.05s; }
+        .card:nth-child(3) { animation-delay: 1.10s; }
+        .card:nth-child(4) { animation-delay: 1.15s; }
+        .card:nth-child(5) { animation-delay: 1.20s; }
+        .card:nth-child(6) { animation-delay: 1.25s; }
+        .card:nth-child(7) { animation-delay: 1.30s; }
+        .card:nth-child(8) { animation-delay: 1.35s; }
+        .card:nth-child(9) { animation-delay: 1.40s; }
+        .card:nth-child(10) { animation-delay: 1.45s; }
+        .card:nth-child(11) { animation-delay: 1.50s; }
+        .card:nth-child(12) { animation-delay: 1.55s; }
+        .card:nth-child(13) { animation-delay: 1.60s; }
+        .card:nth-child(14) { animation-delay: 1.65s; }
+        .card:nth-child(15) { animation-delay: 1.70s; }
+
+        .card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(56, 189, 248, 0.12), transparent);
+            transform: skewX(-25deg);
+            transition: left 0.6s ease;
+        }
+
+        .card:hover::after {
+            left: 150%;
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--card-border-hover);
+            background: linear-gradient(145deg, #13203c 0%, #1e325c 100%);
+            box-shadow: 0 20px 40px rgba(2, 132, 199, 0.35), 0 0 20px rgba(56, 189, 248, 0.3);
+        }
+
+        .card-img-wrapper {
+            width: 100%;
+            height: 135px;
+            background: linear-gradient(180deg, rgba(6, 11, 25, 0.6) 0%, rgba(15, 23, 42, 0.2) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.25rem;
+            border-bottom: 1px solid rgba(56, 189, 248, 0.15);
+            position: relative;
+        }
+
+        .card-img-wrapper.logo-box {
+            background: #ffffff;
+        }
+
+        .card-img-wrapper img {
+            max-width: 82%;
+            max-height: 82%;
+            object-fit: contain;
+            transition: transform 0.35s ease;
+        }
+
+        .icon-circle {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: rgba(56, 189, 248, 0.12);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.35s ease;
+        }
+
+        .card-icon {
+            font-size: 2.2rem;
+            color: var(--primary-cyan);
+            transition: transform 0.35s ease, color 0.35s ease;
+        }
+
+        .card:hover .card-img-wrapper img {
+            transform: scale(1.1);
+        }
+
+        .card:hover .icon-circle {
+            background: var(--primary-cyan);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
+            transform: scale(1.08);
+        }
+
+        .card:hover .card-icon {
+            color: #060b19;
+        }
+
+        .card-content {
+            padding: 1.35rem 1rem 1.5rem;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            justify-content: space-between;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.35rem;
+            letter-spacing: 0.3px;
+        }
+
+        .card-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 1.15rem;
+            line-height: 1.4;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 0.45rem 1rem;
+            background: linear-gradient(90deg, rgba(2, 132, 199, 0.25), rgba(56, 189, 248, 0.2));
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            color: #7dd3fc;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover .badge {
+            background: linear-gradient(90deg, #0284c7, #38bdf8);
+            color: #060b19;
+            border-color: transparent;
+            font-weight: 700;
+        }
+
+        /* Footer / Copyright & Kontak Pembuat Utama */
+        footer {
+            position: relative;
+            z-index: 1;
+            background: #040812;
+            color: #ffffff;
+            padding: 2.5rem 1.5rem;
+            margin-top: auto;
+            border-top: 2px solid rgba(56, 189, 248, 0.3);
+            box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.2rem;
+            text-align: center;
+        }
+
+        .dev-title {
+            font-size: 0.95rem;
+            color: #cbd5e1;
+            letter-spacing: 0.5px;
+        }
+
+        .developers-box {
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .dev-card {
+            background: linear-gradient(145deg, #0f172a, #1e293b);
+            border: 1px solid rgba(56, 189, 248, 0.35);
+            padding: 0.65rem 1.6rem;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--primary-cyan);
+            animation: pulseGlow 3s infinite;
+            transition: transform 0.3s ease;
+        }
+
+        .dev-card:hover {
+            transform: translateY(-3px);
+            background: rgba(56, 189, 248, 0.15);
+        }
+
+        /* Tombol Kontak Instagram Pembuat Utama */
+        .contact-section {
+            margin-top: 0.25rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .contact-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .ig-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 6px 20px rgba(220, 39, 67, 0.35);
+            transition: all 0.3s ease;
+        }
+
+        .ig-btn:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 10px 25px rgba(220, 39, 67, 0.55);
+        }
+
+        .ig-btn i {
+            font-size: 1.2rem;
+        }
+
+        .copyright {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 1.1rem;
+            width: 100%;
+            max-width: 650px;
+            line-height: 1.6;
+        }
+
+        /* Responsif Layar */
+        @media (max-width: 1200px) {
+            .grid-container { grid-template-columns: repeat(4, 1fr); }
+        }
+
+        @media (max-width: 992px) {
+            .grid-container { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.65rem; }
+            .grid-container { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+            .door-badge { font-size: 1rem; padding: 0.8rem; }
+        }
+
+        @media (max-width: 480px) {
+            .grid-container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Animasi Pembuka: Dua Pintu Menyilang -->
+    <div class="door-overlay" id="doorOverlay">
+        <div class="door-panel door-left">
+            <div class="door-badge"><i class="fa-solid fa-chart-line"></i> TRAD</div>
+        </div>
+        <div class="door-panel door-right">
+            <div class="door-badge">ING <i class="fa-solid fa-shield-halved"></i></div>
+        </div>
+    </div>
+
+    <!-- Header Section -->
+    <header>
+        <div class="header-pill">
+            <i class="fa-solid fa-chart-line"></i> Portal Investasi & Trading
+        </div>
+        <h1>KUMPULAN APLIKASI TRADING TERPERCAYA</h1>
+        <p><i class="fa-solid fa-shield-halved" style="color: #38bdf8;"></i> Direktori platform investasi saham, reksa dana, dan aset kripto resmi, aman, serta terpercaya.</p>
+    </header>
+
+    <!-- Main Grid: Total 15 Kotak Penuh (5 kesamping x 3 kebawah) -->
+    <main>
+        <div class="grid-container">
+            
+            <!-- BARIS 1 (Kotak 1 - 5) -->
+            <!-- 1. Stockbit -->
+            <a href="https://stockbit.com/" target="_blank" rel="noopener noreferrer" class="card">
+                <div class="card-img-wrapper logo-box">
+                    <img src="stockbit.png" alt="Stockbit Logo" onerror="this.onerror=null; this.parentNode.classList.remove('logo-box'); this.parentNode.innerHTML='<div class=\'icon-circle\'><i class=\'fa-solid fa-chart-line card-icon\'></i></div>';">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h2 class="card-title">Stockbit</h2>
+                        <p class="card-desc">Investasi Saham & Komunitas</p>
+                    </div>
+                    <span class="badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Website</span>
+                </div>
+            </a>
+
+            <!-- 2. Bibit -->
+            <a href="https://bibit.id/id" target="_blank" rel="noopener noreferrer" class="card">
+                <div class="card-img-wrapper logo-box">
+                    <img src="bibit.png" alt="Bibit Logo" onerror="this.onerror=null; this.parentNode.classList.remove('logo-box'); this.parentNode.innerHTML='<div class=\'icon-circle\'><i class=\'fa-solid fa-seedling card-icon\'></i></div>';">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h2 class="card-title">Bibit</h2>
+                        <p class="card-desc">Aplikasi Reksa Dana & Obligasi</p>
+                    </div>
+                    <span class="badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Website</span>
+                </div>
+            </a>
+
+            <!-- 3. Mitrade -->
+            <a href="https://www.mitrade.com/en" target="_blank" rel="noopener noreferrer" class="card">
+                <div class="card-img-wrapper">
+                    <div class="icon-circle"><i class="fa-solid fa-chart-simple card-icon"></i></div>
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h2 class="card-title">Mitrade</h2>
+                        <p class="card-desc">Trading CFD, Forex & Komoditas</p>
+                    </div>
+                    <span class="badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Website</span>
+                </div>
+            </a>
+
+            <!-- 4. Ajaib -->
+            <a href="https://ajaib.co.id/" target="_blank" rel="noopener noreferrer" class="card">
+                <div class="card-img-wrapper">
+                    <div class="icon-circle"><i class="fa-solid fa-wand-magic-sparkles card-icon"></i></div>
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h2 class="card-title">Ajaib</h2>
+                        <p class="card-desc">Investasi Saham & Kripto Mudah</p>
+                    </div>
+                    <span class="badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Website</span>
+                </div>
+            </a>
+
+            <!-- 5. Pluang -->
+            <a href="https://pluang.com/" target="_blank" rel="noopener noreferrer" class="card">
+                <div class="card-img-wrapper">
+                    <div class="icon-circle"><i class="fa-solid fa-coins card-icon"></i></div>
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h2 class="card-title">Pluang</h2>
+                        <p class="card-desc">Investasi Emas, Saham AS & Kripto</p>
+                    </div>
+                    <span class="badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Website</span>
+                </div>
+            </a>
+
+            <!-- BARIS 2 (Kotak 6 - 10) -->
+            <!-- 6. Nanovest -->
+            <a href="https://www.nanovest.io/" target="_blank" rel="noopener noreferrer" class="card">
+                <div class="card-img-wrapper">
+                    <div class="icon-circle"><i class="fa-solid fa-bolt card-icon"></i></div>
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h2 class="card-title">Nanovest</h2>
+                        <p class="card-desc">Investasi Saham AS & Kripto</p>
+                    </div>
+                    <span class="badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Website</span>
+                </div>
+            </a>
+
+            <!-- 7. Gotrade -->
+            <a href="https://www.heygotrade.com/en/" target="_blank" rel="noopener noreferrer" class="card">
+                <div class="card-img-wrapper">
+                    <div class="icon-circle"><i class="fa-solid fa-globe card-icon"></i></div>
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h2 class="card-title">Gotrade</h2>
+                        <p class="card-desc">Trading Saham AS Fraksional</p>
+                    </div>
+                    <span class="badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Website</span>
+                </div>
+            </a>
+
+            <!-- 8. Bittime -->
+            <a href="https://www.bittime.com/" target="_blank" rel="noopener noreferrer" class="card">
+                <div class="card-img-wrapper">
+                    <div class="icon-circle"><i class="fa-solid fa-bitcoin-sign card-icon"></i></div>
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h2 class="card-title">Bittime</h2>
+                        <p class="card-desc">Platform Jual Beli Aset Kripto</p>
+                    </div>
+                    <span class="badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Website</span>
+                </div>
+            </a>
+
+            <!-- 9. Pintu -->
+            <a href="https://pintu.co.id/?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer" class="card">
+                <div class="card-img-wrapper">
+                    <div class="icon-circle"><i class="fa-solid fa-door-open card-icon"></i></div>
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h2 class="card-title">Pintu</h2>
+                        <p class="card-desc">Aplikasi Kripto Simpel & Aman</p>
+                    </div>
+                    <span class="badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Website</span>
+                </div>
+            </a>
+
+            <!-- 10. Reku -->
+            <a href="https://www.reku.id/?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer" class="card">
+                <div class="card-img-wrapper">
+                    <div class="icon-circle"><i class="fa-solid fa-scale-balanced card-icon"></i></div>
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h2 class="card-title">Reku</h2>
+                        <p class="card-desc">Investasi Aset Kripto Terpercaya</p>
+                    </div>
+                    <span class="badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Website</span>
+                </div>
+            </a>
+
+            <!-- BARIS 3 (Kotak 11 - 15) -->
+            <!-- 11. Tokocrypto -->
+            <a href="https://www.tokocrypto.com/?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer" class="card">
+                <div class="card-img-wrapper">
+                    <div class="icon-circle"><i class="fa-solid fa-wallet card-icon"></i></div>
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h2 class="card-title">Tokocrypto</h2>
+                        <p class="card-desc">Pertukaran Aset Kripto Terbesar</p>
+                    </div>
+                    <span class="badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Website</span>
+                </div>
+            </a>
+
+            <!-- 12. Upbit -->
+            <a href="https://www.id.upbit.com/?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer" class="card">
+                <div class="card-img-wrapper">
+                    <div class="icon-circle"><i class="fa-solid fa-arrow-trend-up card-icon"></i></div>
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h2 class="card-title">Upbit Indonesia</h2>
+                        <p class="card-desc">Bursa Kripto Global & Lokal</p>
+                    </div>
+                    <span class="badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Website</span>
+                </div>
+            </a>
+
+            <!-- 13. Indodax -->
+            <a href="https://indodax.com/" target="_blank" rel="noopener noreferrer" class="card">
+                <div class="card-img-wrapper">
+                    <div class="icon-circle"><i class="fa-solid fa-cubes card-icon"></i></div>
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h2 class="card-title">Indodax</h2>
+                        <p class="card-desc">Marketplace Aset Kripto Indonesia</p>
+                    </div>
+                    <span class="badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Website</span>
+                </div>
+            </a>
+
+            <!-- 14. Tokocrypto Official -->
+            <a href="https://www.tokocrypto.com/" target="_blank" rel="noopener noreferrer" class="card">
+                <div class="card-img-wrapper">
+                    <div class="icon-circle"><i class="fa-solid fa-shield-halved card-icon"></i></div>
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h2 class="card-title">Tokocrypto Official</h2>
+                        <p class="card-desc">Trading Kripto Berizin Bappebti</p>
+                    </div>
+                    <span class="badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Website</span>
+                </div>
+            </a>
+
+            <!-- 15. Bareksa -->
+            <a href="https://www.bareksa.com/?gad_source=1&gad_campaignid=24430746394&gbraid=0AAAAADlK-JhaoazNsnoDmF9zmV_vqwcWe&gclid=CjwKCAiAquDXBhApEiwAoyNqBBcO2j_kUiOyEmwNloP-rkAMHDS5G40EADsQ-OYxBKLoDycF7NxILRoCTT8QAvD_BwE" target="_blank" rel="noopener noreferrer" class="card">
+                <div class="card-img-wrapper">
+                    <div class="icon-circle"><i class="fa-solid fa-chart-pie card-icon"></i></div>
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h2 class="card-title">Bareksa</h2>
+                        <p class="card-desc">Super App Investasi Reksa Dana & SBN</p>
+                    </div>
+                    <span class="badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Website</span>
+                </div>
+            </a>
+
+        </div>
+    </main>
+
+    <!-- Footer / Copyright & Kontak Pembuat Utama -->
+    <footer>
+        <div class="footer-container">
+            <span class="dev-title"><i class="fa-solid fa-code" style="color: #38bdf8;"></i> Website ini dibuat dan dikembangkan oleh:</span>
+            
+            <div class="developers-box">
+                <div class="dev-card">
+                    <i class="fa-solid fa-user-gear"></i>
+                    <span>IRSYAD</span>
+                </div>
+                <div class="dev-card">
+                    <i class="fa-solid fa-user-gear"></i>
+                    <span>HARUN</span>
+                </div>
+            </div>
+
+            <!-- Kontak Pembuat Utama (Instagram) -->
+            <div class="contact-section">
+                <span class="contact-label">Kontak Pembuat Utama:</span>
+                <a href="https://www.instagram.com/irsy.admaulana19/" target="_blank" rel="noopener noreferrer" class="ig-btn">
+                    <i class="fa-brands fa-instagram"></i> @irsy.admaulana19
+                </a>
+            </div>
+
+            <p class="copyright">
+                &copy; 2026 <strong>KUMPULAN APLIKASI TRADING TERPERCAYA</strong>. All Rights Reserved. <br>
+                Designed & Developed by <strong>IRSYAD</strong> & <strong>HARUN</strong>.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        setTimeout(() => {
+            const overlay = document.getElementById('doorOverlay');
+            if (overlay) overlay.remove();
+        }, 1800);
+    </script>
+
+</body>
+</html>
